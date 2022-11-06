@@ -8,7 +8,7 @@ router.post('/',
     [ //14 validacion con express validator
         check('nombre', 'El nombre es obligatorio').not().isEmpty(),
         check('email', 'El email debe ser valido').isEmail(),
-        check('password', 'El password es obligatorio y debe ser de al menos 6 caracteres').isLength({min: 6})
+        check('password', 'El password es obligatorio y debe ser de al menos 6 caracteres').isLength({min: 6}) //cantidad minima de caracteres del password
     ],
     usuariosController.nuevoUsuarios
 );
