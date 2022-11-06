@@ -18,6 +18,8 @@ app.use(express.json());
 app.use('/api/usuarios', require('./routes/usuarios'));
 //16
 app.use('/api/auth', require('./routes/auth'));
+//25
+app.use('/api/enlaces', require('./routes/enlaces'));
 
 
 //3.arrancar la app
