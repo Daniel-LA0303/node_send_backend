@@ -20,6 +20,8 @@ app.use('/api/usuarios', require('./routes/usuarios'));
 app.use('/api/auth', require('./routes/auth'));
 //25
 app.use('/api/enlaces', require('./routes/enlaces'));
+//34
+app.use('/api/archivos', require('./routes/archivos'));
 
 
 //3.arrancar la app

@@ -46,7 +46,42 @@ exports.nuevoEnlace = async (req, res, next) => {
     } catch (error) {
         console.log(error);
     }
+}
+
+//44 obtener enlaces
+exports.obtenerEnlace = async (req, res, next) => {
+    //46
+    //verificar si exite el enalce
+    const {url} = req.params
+    const enlace = await Enlaces.findOne({url})
+
+    if(!enlace){
+        res.status(401).json({msg: 'Ese enlace no existe'});
+
+        return next();
+    }
+
+    //si el enlace existe
+    res.json({archivo: enlace.nombre});
 
 
+    //47 si las descargas son iguales a 1 -Borrar la entrada y borrar el archivo
+    const {descargas, nombre} = enlace;
+    if(descargas === 1){
+        console.log('solo hay una descarga');
+
+        //eliminar el archivo
+        req.archivo = nombre; //obtenemos el nombre
+
+        //eliminar la  entrada de la db
+        await Enlaces.findOneAndDelete(req.params.url);
+
+        next(); //cuando llega a esta parte salta a la ortra funcio n que es eliminarArchivos
+    }else{
+        //48 si las descargas son > a 1 - Restar 1
+        enlace.descargas--;
+        await enlace.save();
+        console.log('Aun hay descargas');
+    }
 
 }
