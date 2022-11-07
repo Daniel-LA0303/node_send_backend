@@ -16,10 +16,19 @@ router.post('/',
 );
 
 
+router.get('/',
+    enlacesController.todosEnlaces
+)
+
 //45
 router.get('/:url',
+    enlacesController.tienePassword,
     enlacesController.obtenerEnlace,
-    archivosController.eliminarArchivos //49
+);
+
+router.post('/:url', 
+    enlacesController.verificarPassword, 
+    enlacesController.obtenerEnlace
 );
 
 module.exports = router;

@@ -9,6 +9,11 @@ router.post('/',
     archivosController.subirArchivos
 );
 
+router.get('/:archivo',
+    archivosController.descargar,
+    archivosController.eliminarArchivos
+)
+
 // //36
 // router.delete('/:id',
 //     archivosController.eliminarArchivos

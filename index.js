@@ -20,6 +20,9 @@ const port = process.env.PORT || 4000;
 //10. habilitar leer los valores de un body
 app.use(express.json());
 
+//HABILITAR LA CARPETA PUBLICA
+app.use(express.static('uploads'));
+
 //rutas de la app
 //6.
 app.use('/api/usuarios', require('./routes/usuarios'));
