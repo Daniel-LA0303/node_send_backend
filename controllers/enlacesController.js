@@ -14,11 +14,11 @@ exports.nuevoEnlace = async (req, res, next) => {
     }
 
     //30 crear el objeto de enlace    
-    const {nombre_original} = req.body;
+    const {nombre_original, nombre} = req.body;
     const enlace = new Enlaces();
     enlace.url = shortid.generate();
     //reenombrando el nombre del archivo y generar el nombre unico
-    enlace.nombre = shortid.generate();
+    enlace.nombre = nombre;
     enlace.nombre_original = nombre_original;
 
     //31 si el usuario esta autenticado
